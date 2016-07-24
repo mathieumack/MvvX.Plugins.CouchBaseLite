@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>MvvX.Plugins.CouchBaseLite.SQLCipher</id>
+        <version>1.6.0.16542</version>
+        <title>CouchBaseLite with SQLCipher (MvvmCross plugin)</title>
+        <authors>MACK Mathieu</authors>
+        <owners>MACK Mathieu</owners>
+        <licenseUrl>https://github.com/mathieumack/MvvX.CouchBaseLite</licenseUrl>
+        <projectUrl>https://github.com/mathieumack/MvvX.CouchBaseLite</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>This package contains the 'CouchBaseLite' plugin for MvvmCross.</description>
+        <tags>mvvm mvvmcross xamarin monodroid monotouch wpf netcore wp wpdev</tags>
+        <dependencies>
+            <group>
+                <!-- Always include regardless of target framework -->
+                <dependency id="MvvmCross" version="4.2.2" />
+                <dependency id="MvvmCross.Binding" version="4.2.2" />
+                <dependency id="MvvmCross.Core" version="4.2.2" />
+                <dependency id="MvvmCross.Platform" version="4.2.2" />
+                <dependency id="Newtonsoft.Json" version="9.0.1" />
+            </group>
+            <group targetFramework="net45">
+                <!-- Always include regardless of target framework -->
+                <dependency id="Couchbase.Lite" version="1.2.1.1" />
+                <dependency id="Couchbase.Lite.Storage.SQLCipher" version="1.2.1.1" />
+            </group>
+            <group targetFramework="MonoAndroid10">
+                <!-- Always include regardless of target framework -->
+                <dependency id="Couchbase.Lite" version="1.2.1.1" />
+                <dependency id="Couchbase.Lite.Storage.SQLCipher" version="1.2.1.1" />
+            </group>
+            <group targetFramework="MonoTouch10">
+                <!-- Always include regardless of target framework -->
+                <dependency id="Couchbase.Lite" version="1.2.1.1" />
+                <dependency id="Couchbase.Lite.Storage.SQLCipher" version="1.2.1.1" />
+            </group>
+        <group targetFramework="portable-win+sl50+wp8">
+            <!-- Otherwise include the Portable CSL -->
+        </group>
+        </dependencies>  
+    </metadata>
+    <files>     
+        <!-- ALL -->
+        <file src="..\MvvX.Plugins.CouchBaseLite\bin\Release\MvvX.Plugins.CouchBaseLite.XML" target="lib\portable45-net45+win8+wp8+wpa81" />
+        <file src="..\MvvX.Plugins.CouchBaseLite\bin\Release\MvvX.Plugins.CouchBaseLite.dll" target="lib\portable45-net45+win8+wp8+wpa81" />
+                
+        <!-- Windows (WPF) -->
+        <file src="..\MvvX.Plugins.CouchBaseLite\bin\Release\MvvX.Plugins.CouchBaseLite.XML" target="lib\net45" />
+        <file src="..\MvvX.Plugins.CouchBaseLite\bin\Release\MvvX.Plugins.CouchBaseLite.dll" target="lib\net45" />
+        <file src="..\MvvX.Plugins.CouchBaseLite.Wpf\bin\Release\MvvX.Plugins.CouchBaseLite.Wpf.dll" target="lib\net45" />
+		<file src="..\BootstrapContent\CouchBaseLitePluginBootstrap.cs.pp" target="content\net45\Bootstrap\CouchBaseLitePluginBootstrap.cs.pp" />
+		
+        <!-- Android -->
+        <file src="..\MvvX.Plugins.CouchBaseLite\bin\Release\MvvX.Plugins.CouchBaseLite.XML" target="lib\MonoAndroid10" />
+        <file src="..\MvvX.Plugins.CouchBaseLite\bin\Release\MvvX.Plugins.CouchBaseLite.dll" target="lib\MonoAndroid10" />
+        <file src="..\MvvX.Plugins.CouchBaseLite.Droid\bin\Release\MvvX.Plugins.CouchBaseLite.Droid.dll" target="lib\MonoAndroid10" />
+		<file src="..\BootstrapContent\CouchBaseLitePluginBootstrap.cs.pp" target="content\MonoAndroid10\Bootstrap\CouchBaseLitePluginBootstrap.cs.pp" />
+		
+        <!-- iOS -->
+        <file src="..\MvvX.Plugins.CouchBaseLite\bin\Release\MvvX.Plugins.CouchBaseLite.XML" target="lib\MonoTouch10" />
+        <file src="..\MvvX.Plugins.CouchBaseLite\bin\Release\MvvX.Plugins.CouchBaseLite.dll" target="lib\MonoTouch10" />
+        <file src="..\MvvX.Plugins.CouchBaseLite.Touch\bin\Release\MvvX.Plugins.CouchBaseLite.Touch.dll" target="lib\MonoTouch10" />
+		<file src="..\BootstrapContent\CouchBaseLitePluginBootstrap.cs.pp" target="content\MonoTouch10\Bootstrap\CouchBaseLitePluginBootstrap.cs.pp" />
+    </files>
+</package>
+

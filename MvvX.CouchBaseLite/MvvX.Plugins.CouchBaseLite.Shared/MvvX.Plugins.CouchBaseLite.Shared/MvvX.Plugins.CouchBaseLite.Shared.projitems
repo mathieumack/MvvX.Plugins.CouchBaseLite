@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>cc288502-b308-4a43-95a8-689f7e4f9ce9</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>MvvX.Plugins.CouchBaseLite.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CouchBaseLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Database\PlatformDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Database\PlatformDatabaseChangeEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Database\PlatformDatabaseOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Documents\PlatformAttachment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Documents\PlatformDocument.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Documents\PlatformDocumentChange.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Documents\PlatformRevision.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Documents\PlatformSavedRevision.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Documents\PlatformUnsavedRevision.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Plugin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Queries\PlatformLiveQuery.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Queries\PlatformQuery.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Queries\PlatformQueryEnumerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Queries\PlatformQueryRow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\PlatformView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)GettingStarted.Xamarin" />
+  </ItemGroup>
+</Project>
