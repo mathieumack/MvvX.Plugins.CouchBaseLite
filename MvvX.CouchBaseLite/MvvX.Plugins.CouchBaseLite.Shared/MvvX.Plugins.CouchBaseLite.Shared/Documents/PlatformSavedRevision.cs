@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Couchbase.Lite;
 using MvvX.Plugins.CouchBaseLite.Documents;
 
@@ -44,6 +43,30 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
         {
             this.savedRevision = savedRevision;
         }
+
+        #endregion
+
+
+        #region Interface
+
+        public IUnsavedRevision CreateRevision()
+        {
+            var unsavedRevision = savedRevision.CreateRevision();
+            return new PlatformUnsavedRevision(unsavedRevision);
+        }
+
+        public ISavedRevision CreateRevision(IDictionary<string, object> properties)
+        {
+            var retSavedRevision = savedRevision.CreateRevision(properties);
+            return new PlatformSavedRevision(retSavedRevision);
+        }
+
+        public ISavedRevision DeleteDocument()
+        {
+            var retSavedRevision = savedRevision.DeleteDocument();
+            return new PlatformSavedRevision(retSavedRevision);
+        }
+
 
         #endregion
     }

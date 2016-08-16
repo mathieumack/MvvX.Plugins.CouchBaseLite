@@ -21,12 +21,12 @@ namespace MvvX.Plugins.CouchBaseLite.Platform
         /// Name of the database
         /// </summary>
         private string databaseName;
-        
+
         /// <summary>
         /// Manager
         /// </summary>
         private Manager manager;
-        
+
         #region Constructor
 
         public CouchBaseLite()
@@ -37,7 +37,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform
         #endregion
 
         #region Implementations
-        
+
         public IDatabaseOptions CreateDatabaseOptions()
         {
             return new PlatformDatabaseOptions();
@@ -47,22 +47,22 @@ namespace MvvX.Plugins.CouchBaseLite.Platform
         {
             this.workingFolderPath = workingFolderPath;
             this.databaseName = databaseName;
-                        
+
             try
             {
                 var directoryInfo = new DirectoryInfo(workingFolderPath);
                 this.manager = new Manager(directoryInfo, Manager.DefaultOptions);
-                
+
                 var options = new DatabaseOptions();
-                
+
                 options.Create = databaseOptions.Create;
-                
+
                 if (databaseOptions.StorageType == Storages.StorageTypes.ForestDb)
                     options.StorageType = StorageEngineTypes.ForestDB;
                 else
                     options.StorageType = StorageEngineTypes.SQLite;
-                
-                switch(databaseOptions.SymmetricKeyType)
+
+                switch (databaseOptions.SymmetricKeyType)
                 {
                     case SymmetricKeyType.Password:
                         options.EncryptionKey = new SymmetricKey(databaseOptions.Password);
@@ -76,14 +76,14 @@ namespace MvvX.Plugins.CouchBaseLite.Platform
                     default:
                         break;
                 }
-                
+
                 var database = manager.OpenDatabase(databaseName.ToLower(), options);
                 return new PlatformDatabase(database);
             }
             catch (Exception e)
             {
                 Mvx.Trace("Error getting database : " + e.Message);
-                return null;
+                throw;
             }
         }
 

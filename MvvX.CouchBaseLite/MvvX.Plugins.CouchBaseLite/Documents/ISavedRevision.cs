@@ -18,5 +18,24 @@ namespace MvvX.Plugins.CouchBaseLite.Documents
         /// Properties of the revision
         /// </summary>
         IDictionary<string, object> Properties { get; }
+
+        /// <summary>
+        /// Create a new unsaved revision
+        /// </summary>
+        /// <returns></returns>
+        IUnsavedRevision CreateRevision();
+
+        /// <summary>
+        /// Create a new saved revision from a properties set
+        /// </summary>
+        /// <param name="properties"></param>
+        /// <returns></returns>
+        ISavedRevision CreateRevision(IDictionary<string, object> properties);
+
+        /// <summary>
+        /// Delete the document and returned the new saved revision
+        /// </summary>
+        /// <returns></returns>
+        ISavedRevision DeleteDocument();
     }
 }
