@@ -10,6 +10,12 @@ namespace MvvX.Plugins.CouchBaseLite.Queries
 
         long SequenceNumber { get; }
 
+        [Obsolete("This property is heavy and will be replaced by IsStale()")]
         bool Stale { get; }
+
+        bool IsStale();
+
+        [Obsolete("Use LINQ ElementAt")]
+        IQueryRow GetRow(int index);
     }
 }

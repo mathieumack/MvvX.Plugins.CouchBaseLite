@@ -2,7 +2,7 @@
  <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>MvvX.Plugins.CouchBaseLite</id>
-        <version>1.6.1.25536</version>
+        <version>1.7.0.27571</version>
         <title>CouchBaseLite (MvvmCross plugin)</title>
         <authors>MACK Mathieu</authors>
         <owners>MACK Mathieu</owners>
@@ -22,15 +22,15 @@
         </group>
           <group targetFramework="net45">
             <!-- Always include regardless of target framework -->
-            <dependency id="Couchbase.Lite" version="1.2.1.1" />
+            <dependency id="Couchbase.Lite" version="1.3.0" />
         </group>
           <group targetFramework="MonoAndroid10">
             <!-- Always include regardless of target framework -->
-            <dependency id="Couchbase.Lite" version="1.2.1.1" />
+            <dependency id="Couchbase.Lite" version="1.3.0" />
         </group>
           <group targetFramework="MonoTouch10">
             <!-- Always include regardless of target framework -->
-            <dependency id="Couchbase.Lite" version="1.2.1.1" />
+            <dependency id="Couchbase.Lite" version="1.3.0" />
         </group>
         <group targetFramework="portable-win+sl50+wp8">
             <!-- Otherwise include the Portable CSL -->

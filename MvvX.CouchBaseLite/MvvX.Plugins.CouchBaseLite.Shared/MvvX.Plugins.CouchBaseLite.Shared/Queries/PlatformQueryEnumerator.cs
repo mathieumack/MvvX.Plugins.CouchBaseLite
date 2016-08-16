@@ -3,6 +3,7 @@ using MvvX.Plugins.CouchBaseLite.Queries;
 using System.Collections.Generic;
 using System.Collections;
 using MvvX.Plugins.CouchBaseLite.Database;
+using System;
 
 namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
 {
@@ -59,6 +60,11 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
             }
         }
 
+        public bool IsStale()
+        {
+            return queryEnumerator.IsStale();
+        }
+
         object IEnumerator.Current
         {
             get
@@ -71,6 +77,11 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
         public void Dispose()
         {
             this.queryEnumerator.Dispose();
+        }
+
+        public IQueryRow GetRow(int index)
+        {
+            return new PlatformQueryRow(this.queryEnumerator.GetRow(index), this.database);
         }
 
         public IEnumerator<IQueryRow> GetEnumerator()

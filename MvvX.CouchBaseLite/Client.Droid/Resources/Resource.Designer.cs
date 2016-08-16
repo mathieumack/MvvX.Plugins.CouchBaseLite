@@ -26,6 +26,7 @@ namespace Client.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Couchbase.Lite.Android.Resource.String.library_name = global::Client.Droid.Resource.String.library_name;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxBind = global::Client.Droid.Resource.Attribute.MvxBind;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxDropDownItemTemplate = global::Client.Droid.Resource.Attribute.MvxDropDownItemTemplate;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxGroupItemTemplate = global::Client.Droid.Resource.Attribute.MvxGroupItemTemplate;
@@ -140,11 +141,14 @@ namespace Client.Droid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f050002
+			public const int ApplicationName = 2131034114;
+			
 			// aapt resource value: 0x7f050001
-			public const int ApplicationName = 2131034113;
+			public const int Hello = 2131034113;
 			
 			// aapt resource value: 0x7f050000
-			public const int Hello = 2131034112;
+			public const int library_name = 2131034112;
 			
 			static String()
 			{
