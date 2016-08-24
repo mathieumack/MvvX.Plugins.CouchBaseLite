@@ -52,6 +52,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
             }
         }
 
+        [Obsolete("This property is heavy and will be replaced by IsStale()")]
         public bool Stale
         {
             get
@@ -79,6 +80,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
             this.queryEnumerator.Dispose();
         }
 
+        [Obsolete("Use LINQ ElementAt")]
         public IQueryRow GetRow(int index)
         {
             return new PlatformQueryRow(this.queryEnumerator.GetRow(index), this.database);

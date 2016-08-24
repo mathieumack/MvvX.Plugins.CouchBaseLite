@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Plugin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Queries\PlatformLiveQuery.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Queries\PlatformQuery.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Queries\PlatformQueryCompletedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Queries\PlatformQueryEnumerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Queries\PlatformQueryRow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\PlatformView.cs" />

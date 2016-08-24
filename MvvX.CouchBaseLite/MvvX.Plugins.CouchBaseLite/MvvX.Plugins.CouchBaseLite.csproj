@@ -36,6 +36,7 @@
     <DocumentationFile>bin\Release\MvvX.Plugins.CouchBaseLite.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CouchbaseLiteException.cs" />
     <Compile Include="Database\DatabaseChangeEventArgs.cs" />
     <Compile Include="Database\IDatabaseOptions.cs" />
     <Compile Include="Documents\IAttachment.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\ILiveQuery.cs" />
     <Compile Include="Queries\IQuery.cs" />
+    <Compile Include="Queries\IQueryCompletedEventArgs.cs" />
     <Compile Include="Queries\IQueryEnumerator.cs" />
     <Compile Include="Queries\IQueryRow.cs" />
     <Compile Include="Queries\QueryAllDocsMode.cs" />

@@ -22,7 +22,7 @@ namespace MvvX.Plugins.CouchBaseLite
         /// <param name="workingFolderPath">Folder on the disk where saving the database</param>
         /// <param name="databaseName">Name of the database</param>
         /// <param name="databaseOptions">Options for the database manager. Use CreateDatabaseOptions() to generate object</param>
-        /// <exception cref="Couchbase.Lite.CouchbaseLiteException">Thrown if an issue occurs while gettings or createing the Couchbase.Lite.Database.</exception>
+        /// <exception cref="CouchbaseLiteException">Thrown if an issue occurs while gettings or createing the Couchbase.Lite.Database.</exception>
         IDatabase CreateConnection(string workingFolderPath, string databaseName, IDatabaseOptions databaseOptions);
     }
 }

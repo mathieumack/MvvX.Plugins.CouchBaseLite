@@ -1,10 +1,5 @@
 ﻿using MvvX.Plugins.CouchBaseLite.Database;
 using MvvX.Plugins.CouchBaseLite.Queries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static MvvX.Plugins.CouchBaseLite.Views.Delegates;
 
 namespace MvvX.Plugins.CouchBaseLite.Views

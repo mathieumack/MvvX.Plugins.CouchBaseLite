@@ -24,11 +24,32 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
             this.query = query;
             this.database = database;
             this.settedPostFilter = null;
+
+            this.query.Completed += Query_Completed;
         }
 
         #endregion
 
         #region Implements
+
+        public void Dispose()
+        {
+            this.query.Completed -= Query_Completed;
+            this.query.Dispose();
+        }
+
+        /// <summary>
+        /// Change from the database
+        /// </summary>
+        public event EventHandler<IQueryCompletedEventArgs> Completed;
+
+        private void Query_Completed(object sender, QueryCompletedEventArgs e)
+        {
+            if (Completed != null)
+            {
+                this.Completed(sender, new PlatformQueryCompletedEventArgs(e, this.database));
+            }
+        }
 
         public IndexUpdateMode IndexUpdateMode
         {
@@ -256,15 +277,38 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
                 this.query.StartKeyDocId = value;
             }
         }
-        
-        public void Dispose()
+
+        public IDatabase Database
         {
-            this.query.Dispose();
+            get
+            {
+                return this.database;
+            }
+        }
+
+        public int PrefixMatchLevel
+        {
+            get
+            {
+                return this.query.PrefixMatchLevel;
+            }
+
+            set
+            {
+                this.query.PrefixMatchLevel = value;
+            }
         }
 
         public IQueryEnumerator Run()
         {
-            return new PlatformQueryEnumerator(this.query.Run(), this.database);
+            try
+            { 
+                return new PlatformQueryEnumerator(this.query.Run(), this.database);
+            }
+            catch (Couchbase.Lite.CouchbaseLiteException ex)
+            {
+                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+            }
         }
 
         public async Task<IQueryEnumerator> RunAsync()

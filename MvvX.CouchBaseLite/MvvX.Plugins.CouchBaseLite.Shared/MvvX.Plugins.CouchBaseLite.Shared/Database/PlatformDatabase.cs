@@ -73,6 +73,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Database
 
         public void Dispose()
         {
+            this.database.Changed -= Database_Changed;
             database.Dispose();
         }
 

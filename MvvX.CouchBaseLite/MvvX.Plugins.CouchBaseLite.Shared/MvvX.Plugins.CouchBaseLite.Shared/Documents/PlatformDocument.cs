@@ -11,7 +11,20 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
         #region Fields
 
         private readonly Document document;
-        
+
+        #endregion
+
+        #region Constructor
+
+        public PlatformDocument(Document document)
+        {
+            this.document = document;
+        }
+
+        #endregion
+
+        #region Interface
+
         public string Id
         {
             get
@@ -67,7 +80,14 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
         {
             get
             {
-                return this.document.LeafRevisions.Select(e => new PlatformSavedRevision(e));
+                try
+                {
+                    return this.document.LeafRevisions.Select(e => new PlatformSavedRevision(e));
+                }
+                catch(Couchbase.Lite.CouchbaseLiteException ex)
+                {
+                    throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+                }
             }
         }
 
@@ -75,22 +95,20 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
         {
             get
             {
-                return this.document.RevisionHistory.Select(e => new PlatformSavedRevision(e));
+                try
+                { 
+                    return this.document.RevisionHistory.Select(e => new PlatformSavedRevision(e));
+                }
+                catch (Couchbase.Lite.CouchbaseLiteException ex)
+                {
+                    throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+                }
             }
         }
 
-        #endregion
-
-        public PlatformDocument(Document document)
+        public TValue GetProperty<TValue>(string key)
         {
-            this.document = document;
-        }
-
-        #region Interface
-
-        public T GetProperty<T>(string key) where T : class
-        {
-            return document.GetProperty<T>(key);
+            return document.GetProperty<TValue>(key);
         }
 
         public object GetProperty(string key)
@@ -100,26 +118,85 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
 
         public void Delete()
         {
-            document.Delete();
+            try
+            { 
+                document.Delete();
+            }
+            catch (Couchbase.Lite.CouchbaseLiteException ex)
+            {
+                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+            }
         }
 
         public void Purge()
         {
-            document.Purge();
+            try
+            { 
+                document.Purge();
+            }
+            catch (Couchbase.Lite.CouchbaseLiteException ex)
+            {
+                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+            }
         }
 
         public ISavedRevision PutProperties(IDictionary<string, object> properties)
         {
-            var revision = document.PutProperties(properties);
-            return new PlatformSavedRevision(revision);
+            try
+            {
+                var revision = document.PutProperties(properties);
+                return new PlatformSavedRevision(revision);
+            }
+            catch (Couchbase.Lite.CouchbaseLiteException ex)
+            {
+                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+            }
         }
 
         public void Update(Func<IUnsavedRevision, bool> updateAction)
         {
-            document.Update((UnsavedRevision newRevision) =>
+            try
+            { 
+                document.Update((UnsavedRevision newRevision) =>
+                {
+                    return updateAction.Invoke(new PlatformUnsavedRevision(newRevision));
+                });
+            }
+            catch (Couchbase.Lite.CouchbaseLiteException ex)
             {
-                return updateAction.Invoke(new PlatformUnsavedRevision(newRevision));
-            });
+                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+            }
+        }
+
+        public void ExpireAfter(TimeSpan timeInterval)
+        {
+            document.ExpireAfter(timeInterval);
+        }
+
+        public void ExpireAt(DateTime? expireTime)
+        {
+            try
+            { 
+                document.ExpireAt(expireTime);
+            }
+            catch (Couchbase.Lite.CouchbaseLiteException ex)
+            {
+                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+            }
+        }
+
+        public DateTime? GetExpirationDate()
+        {
+            return document.GetExpirationDate();
+        }
+
+        public ISavedRevision GetRevision(string id)
+        {
+            var revision = document.GetRevision(id);
+            if (revision != null)
+                return new PlatformSavedRevision(revision);
+            else
+                return null;
         }
 
         //private static void addAttachment(Database database, String documentId)
