@@ -1,4 +1,5 @@
-﻿using Couchbase.Lite;
+﻿using System;
+using Couchbase.Lite;
 using MvvX.Plugins.CouchBaseLite.Database;
 using MvvX.Plugins.CouchBaseLite.Platform.Queries;
 using MvvX.Plugins.CouchBaseLite.Queries;
@@ -157,6 +158,11 @@ namespace MvvX.Plugins.CouchBaseLite.Shared.Views
                 (ReduceDelegate)((x, y, z) => {
                 return reduceDelegate.Invoke(x, y, z);
             }), version);
+        }
+
+        public void UpdateIndex()
+        {
+            this.view.UpdateIndex();
         }
 
         #endregion

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Couchbase.Lite;
 using MvvX.Plugins.CouchBaseLite.Documents;
 
@@ -9,30 +10,6 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
         #region Fields
 
         private readonly SavedRevision savedRevision;
-        
-        public string Id
-        {
-            get
-            {
-                return savedRevision.Id;
-            }
-        }
-
-        public string ParentId
-        {
-            get
-            {
-                return savedRevision.ParentId;
-            }
-        }
-
-        public IDictionary<string, object> Properties
-        {
-            get
-            {
-                return savedRevision.Properties;
-            }
-        }
 
         #endregion
 
@@ -42,6 +19,14 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
             : base(savedRevision)
         {
             this.savedRevision = savedRevision;
+        }
+
+        public bool PropertiesAvailable
+        {
+            get
+            {
+                return this.savedRevision.PropertiesAvailable;
+            }
         }
 
         #endregion
@@ -57,14 +42,28 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
 
         public ISavedRevision CreateRevision(IDictionary<string, object> properties)
         {
-            var retSavedRevision = savedRevision.CreateRevision(properties);
-            return new PlatformSavedRevision(retSavedRevision);
+            try
+            {
+                var retSavedRevision = savedRevision.CreateRevision(properties);
+                return new PlatformSavedRevision(retSavedRevision);
+            }
+            catch (Couchbase.Lite.CouchbaseLiteException ex)
+            {
+                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+            }
         }
 
         public ISavedRevision DeleteDocument()
         {
-            var retSavedRevision = savedRevision.DeleteDocument();
-            return new PlatformSavedRevision(retSavedRevision);
+            try
+            {
+                var retSavedRevision = savedRevision.DeleteDocument();
+                return new PlatformSavedRevision(retSavedRevision);
+            }
+            catch (Couchbase.Lite.CouchbaseLiteException ex)
+            {
+                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+            }
         }
 
 

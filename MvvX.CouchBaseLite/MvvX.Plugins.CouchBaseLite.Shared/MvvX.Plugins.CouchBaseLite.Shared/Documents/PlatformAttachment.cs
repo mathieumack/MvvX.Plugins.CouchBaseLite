@@ -13,7 +13,14 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
         {
             get
             {
+                try
+                { 
                 return attachment.Content;
+                }
+                catch (Couchbase.Lite.CouchbaseLiteException ex)
+                {
+                    throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+                }
             }
         }
 
@@ -21,7 +28,14 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
         {
             get
             {
+                try
+                { 
                 return attachment.ContentStream;
+                }
+                catch (Couchbase.Lite.CouchbaseLiteException ex)
+                {
+                    throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+                }
             }
         }
 
@@ -37,7 +51,14 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
         {
             get
             {
+                try
+                { 
                 return new PlatformDocument(attachment.Document);
+                }
+                catch (Couchbase.Lite.CouchbaseLiteException ex)
+                {
+                    throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+                }
             }
         }
 

@@ -10,11 +10,51 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
     {
         private readonly Revision revision;
 
-        public IEnumerable<string> AttachmentNames
+        public string Id
         {
             get
             {
-                return revision.AttachmentNames;
+                return revision.Id;
+            }
+        }
+
+        public bool IsDeletion
+        {
+            get
+            {
+                return revision.IsDeletion;
+            }
+        }
+
+        public string ParentId
+        {
+            get
+            {
+                return revision.ParentId;
+            }
+        }
+
+        public bool IsGone
+        {
+            get
+            {
+                return revision.IsGone;
+            }
+        }
+
+        public IDictionary<string, object> Properties
+        {
+            get
+            {
+                return revision.Properties;
+            }
+        }
+
+        public IDictionary<string, object> UserProperties
+        {
+            get
+            {
+                return revision.UserProperties;
             }
         }
 
@@ -23,6 +63,14 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
             get
             {
                 return this.revision.RevisionHistory.Select(e => new PlatformSavedRevision(e));
+            }
+        }
+
+        public IEnumerable<string> AttachmentNames
+        {
+            get
+            {
+                return revision.AttachmentNames;
             }
         }
 
@@ -41,14 +89,6 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
                 return new PlatformAttachment(attachment);
             else
                 return null;
-        }
-
-        public bool IsGone
-        {
-            get
-            {
-                return revision.IsGone;
-            }
         }
 
         public PlatformRevision(Revision revision)
@@ -71,6 +111,11 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
         public override string ToString()
         {
             return revision.ToString();
+        }
+
+        public object GetProperty(string key)
+        {
+            return revision.GetProperty(key);
         }
 
         #endregion
