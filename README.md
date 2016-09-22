@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/uys4bl6qcqauram7/branch/master?svg=true)](https://ci.appveyor.com/project/mathieumack/mvvx-plugins-couchbaselite/branch/master)
+
 ## MvvX.CouchBaseLite
 
 Using the CouchBaseLite-Plugin for MvvmCross is quite simple. The plugin injects the ICouchBaseLite interface into the IoC container.
