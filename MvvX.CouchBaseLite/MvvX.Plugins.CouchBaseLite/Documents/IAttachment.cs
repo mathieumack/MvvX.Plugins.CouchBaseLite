@@ -4,37 +4,16 @@ using System.IO;
 
 namespace MvvX.Plugins.CouchBaseLite.Documents
 {
+    /// <summary>
+    /// A Couchbase Lite Document Attachment.
+    /// </summary>
     public interface IAttachment : IDisposable
     {
         /// <summary>
-        /// Contennt of the attachment
+        /// Gets the owning <see cref="IRevision"/>.
         /// </summary>
-        IEnumerable<byte> Content { get; }
-
-        /// <summary>
-        /// Content stream
-        /// </summary>
-        Stream ContentStream { get; }
-
-        /// <summary>
-        /// Content Type
-        /// </summary>
-        string ContentType { get; }
-
-        /// <summary>
-        /// Document of the attachment
-        /// </summary>
-        IDocument Document { get; }
-
-        /// <summary>
-        /// Lenght of the attachment
-        /// </summary>
-        long Length { get; }
-
-        /// <summary>
-        /// Metadatas
-        /// </summary>
-        IDictionary<string, object> Metadata { get; }
+        /// <value>the owning <see cref="IRevision"/>.</value>
+        IRevision Revision { get; }
 
         /// <summary>
         /// Name of the attachment
@@ -42,8 +21,45 @@ namespace MvvX.Plugins.CouchBaseLite.Documents
         string Name { get; }
 
         /// <summary>
-        /// Revision of the attachment
+        /// Gets the owning <see cref="IDocument"/>.
         /// </summary>
-        IRevision Revision { get; }
+        /// <value>The owning <see cref="IDocument"/></value>
+        /// <exception cref="CouchbaseLiteException"></exception>
+        IDocument Document { get; }
+
+        /// <summary>
+        /// Gets the content-type.
+        /// </summary>
+        /// <value>The content-type.</value>
+        string ContentType { get; }
+
+
+        /// <summary>
+        /// Get the <see cref="IAttachment"/> content stream.  The caller must not
+        /// dispose it.
+        /// </summary>
+        /// <value>The <see cref="IAttachment"/> content stream.</value>
+        /// <exception cref="CouchbaseLiteException">
+        /// Thrown if an error occurs when getting the content stream.
+        /// </exception>
+        Stream ContentStream { get; }
+        
+        /// <summary>Gets the <see cref="IAttachment"/> content.</summary>
+        /// <value>The <see cref="IAttachment"/> content</value>
+        /// <exception cref="CouchbaseLiteException">
+        /// Thrown if an error occurs when getting the content.
+        /// </exception>
+        IEnumerable<byte> Content { get; }
+
+        /// <summary>
+        /// Gets the length in bytes of the content.
+        /// </summary>
+        /// <value>The length in bytes of the content.</value>
+        long Length { get; }
+
+        /// <summary>
+        /// The CouchbaseLite metadata about the attachment, that lives in the document.
+        /// </summary>
+        IDictionary<string, object> Metadata { get; }
     }
 }

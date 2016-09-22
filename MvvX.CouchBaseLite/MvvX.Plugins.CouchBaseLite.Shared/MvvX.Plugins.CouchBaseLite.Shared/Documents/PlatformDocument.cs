@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Couchbase.Lite;
 using MvvX.Plugins.CouchBaseLite.Documents;
 using System.Linq;
+using System.IO;
 
 namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
 {
@@ -106,6 +107,21 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
             }
         }
 
+        public IEnumerable<ISavedRevision> ConflictingRevisions
+        {
+            get
+            {
+                try
+                {
+                    return this.document.ConflictingRevisions.Select(e => new PlatformSavedRevision(e));
+                }
+                catch (Couchbase.Lite.CouchbaseLiteException ex)
+                {
+                    throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+                }
+            }
+        }
+
         public TValue GetProperty<TValue>(string key)
         {
             return document.GetProperty<TValue>(key);
@@ -175,14 +191,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
 
         public void ExpireAt(DateTime? expireTime)
         {
-            try
-            { 
-                document.ExpireAt(expireTime);
-            }
-            catch (Couchbase.Lite.CouchbaseLiteException ex)
-            {
-                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
-            }
+            document.ExpireAt(expireTime);
         }
 
         public DateTime? GetExpirationDate()
@@ -197,6 +206,27 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
                 return new PlatformSavedRevision(revision);
             else
                 return null;
+        }
+
+        public IUnsavedRevision CreateRevision()
+        {
+            var revision = document.CreateRevision();
+            if (revision != null)
+                return new PlatformUnsavedRevision(revision);
+            else
+                return null;
+        }
+
+        public bool PutExistingRevision(IDictionary<string, object> properties, IDictionary<string, Stream> attachments, IList<string> revisionHistory, Uri sourceUri)
+        {
+            try
+            {
+                return document.PutExistingRevision(properties, attachments, revisionHistory, sourceUri);
+            }
+            catch (Couchbase.Lite.CouchbaseLiteException ex)
+            {
+                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+            }
         }
 
         //private static void addAttachment(Database database, String documentId)

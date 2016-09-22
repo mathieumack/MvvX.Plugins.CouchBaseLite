@@ -7,21 +7,6 @@ namespace MvvX.Plugins.CouchBaseLite.Documents
     public interface IUnsavedRevision : IRevision, IDisposable
     {
         /// <summary>
-        /// Id of the revision
-        /// </summary>
-        string Id { get; }
-
-        /// <summary>
-        /// Id of the parent
-        /// </summary>
-        string ParentId { get; }
-
-        /// <summary>
-        /// Properties of the revision
-        /// </summary>
-        IDictionary<string, object> Properties { get; }
-
-        /// <summary>
         /// Delete an attchment from the current revision
         /// </summary>
         /// <param name="name">Name of the attachment</param>

@@ -7,73 +7,18 @@ using System.Linq;
 
 namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
 {
-    public class PlatformUnsavedRevision : IUnsavedRevision
+    public class PlatformUnsavedRevision : PlatformRevision, IUnsavedRevision
     {
         #region Fields
 
         private readonly UnsavedRevision unsavedRevision;
-
-        public string Id
-        {
-            get
-            {
-                return unsavedRevision.Id;
-            }
-        }
-
-        public bool IsGone
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string ParentId
-        {
-            get
-            {
-                return unsavedRevision.ParentId;
-            }
-        }
-
-        public IEnumerable<string> AttachmentNames
-        {
-            get
-            {
-                return unsavedRevision.AttachmentNames;
-            }
-        }
-
-        public IDictionary<string, object> Properties
-        {
-            get
-            {
-                return unsavedRevision.Properties;
-            }
-        }
-
-        public IEnumerable<IAttachment> Attachments
-        {
-            get
-            {
-                return this.unsavedRevision.Attachments.Select(e => new PlatformAttachment(e));
-            }
-        }
-
-        public IEnumerable<ISavedRevision> RevisionHistory
-        {
-            get
-            {
-                return this.unsavedRevision.RevisionHistory.Select(e => new PlatformSavedRevision(e));
-            }
-        }
-
+           
         #endregion
 
         #region Constructor
 
         public PlatformUnsavedRevision(UnsavedRevision unsavedRevision)
+            : base(unsavedRevision)
         {
             this.unsavedRevision = unsavedRevision;
         }
@@ -81,16 +26,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
         #endregion
 
         #region Methods
-
-        public IAttachment GetAttachment(string name)
-        {
-            var attachment = unsavedRevision.GetAttachment(name);
-            if (attachment != null)
-                return new PlatformAttachment(attachment);
-            else
-                return null;
-        }
-
+        
         public void Dispose()
         {
             unsavedRevision.Dispose();

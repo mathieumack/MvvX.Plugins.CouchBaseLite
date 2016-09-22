@@ -2,7 +2,7 @@
  <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>MvvX.Plugins.CouchBaseLite.ForestDB</id>
-        <version>2.0.1.898</version>
+        <version>2.2.0.21350</version>
         <title>CouchBaseLite with ForestDb (MvvmCross plugin)</title>
         <authors>MACK Mathieu</authors>
         <owners>MACK Mathieu</owners>
