@@ -220,7 +220,12 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
                 this.settedPostFilter = value;
                 this.query.PostFilter = (row) =>
                 {
-                    var platformRow = new PlatformQueryRow(row, database);
+                    IQueryRow platformRow;
+                    if(row != null)
+                        platformRow = new PlatformQueryRow(row, database);
+                    else
+                        platformRow = null;
+
                     return value(platformRow);
                 };
             }
@@ -302,8 +307,12 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
         public IQueryEnumerator Run()
         {
             try
-            { 
-                return new PlatformQueryEnumerator(this.query.Run(), this.database);
+            {
+                var res = this.query.Run();
+                if (res == null)
+                    return null;
+                else
+                    return new PlatformQueryEnumerator(res, this.database);
             }
             catch (Couchbase.Lite.CouchbaseLiteException ex)
             {
@@ -314,13 +323,20 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
         public async Task<IQueryEnumerator> RunAsync()
         {
             var result = await this.query.RunAsync();
-            return new PlatformQueryEnumerator(result, this.database);
+            
+            if (result == null)
+                return null;
+            else
+                return new PlatformQueryEnumerator(result, this.database);
         }
 
         public ILiveQuery ToLiveQuery()
         {
             var result = this.query.ToLiveQuery();
-            return new PlatformLiveQuery(result, this.database);
+            if (result != null)
+                return new PlatformLiveQuery(result, this.database);
+            else
+                return null;
         }
 
         #endregion

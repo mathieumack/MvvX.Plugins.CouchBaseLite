@@ -19,6 +19,9 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
 
         public PlatformDocument(Document document)
         {
+            if (document == null)
+                throw new ArgumentNullException("document should not be null");
+
             this.document = document;
         }
 

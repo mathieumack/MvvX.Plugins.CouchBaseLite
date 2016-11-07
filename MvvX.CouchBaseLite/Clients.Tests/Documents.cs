@@ -26,6 +26,7 @@ namespace Clients.Tests
                 var properties = new Dictionary<string, object>();
                 properties["title"] = "Happy coding !";
                 properties["name"] = name;
+                properties["age"] = 10;
                 properties["CustomContent"] = new
                 {
                     Field1 = "Hello.",
@@ -46,6 +47,120 @@ namespace Clients.Tests
             }
 
             return null;
+        }
+
+
+        /// <summary>
+        /// Create a new document in the database and populate some fields
+        /// </summary>
+        /// <param name="database"></param>
+        public static IDocument CreateDocument1(IDatabase database)
+        {
+            string id = "1";
+            var document = database.GetDocument(id);
+
+            var properties = new Dictionary<string, object>();
+            properties["id"] = id;
+            properties["name"] = "Alexandre";
+            properties["age"] = 10;
+            properties["city"] = new List<string> { "Andernos", "Grenoble" };
+            properties["CustomContent"] = new
+            {
+                Field1 = "Hello1.",
+                SubField = new
+                {
+                    Field1 = "He 1 !",
+                    Field2 = "What's your name 1 ?"
+                }
+            };
+            document.PutProperties(properties);
+            return document;
+        }
+
+
+        /// <summary>
+        /// Create a new document in the database and populate some fields
+        /// </summary>
+        /// <param name="database"></param>
+        public static IDocument CreateDocument2(IDatabase database)
+        {
+            string id = "2";
+            var document = database.GetDocument(id);
+
+            var properties = new Dictionary<string, object>();
+            properties["id"] = id;
+            properties["age"] = 15;
+            properties["name"] = "Vincent";
+            properties["city"] = new List<string> { "Grenoble" };
+            properties["CustomContent"] = new
+            {
+                Field1 = "Hello1.",
+                SubField = new
+                {
+                    Field1 = "He 2 !",
+                    Field2 = "What's your name 2 ?"
+                }
+            };
+            document.PutProperties(properties);
+            return document;
+        }
+
+
+        /// <summary>
+        /// Create a new document in the database and populate some fields
+        /// </summary>
+        /// <param name="database"></param>
+        public static IDocument CreateDocument3(IDatabase database)
+        {
+            string id = "3";
+            var document = database.GetDocument(id);
+            
+            var properties = new Dictionary<string, object>();
+            properties["id"] = id;
+            properties["name"] = "Monder";
+            properties["city"] = new List<string> { "Paris" };
+            document.PutProperties(properties);
+            return document;
+        }
+
+
+
+        /// <summary>
+        /// Create a new document in the database and populate some fields
+        /// </summary>
+        /// <param name="database"></param>
+        public static IDocument CreateDocument4(IDatabase database)
+        {
+            string id = "4";
+            var document = database.GetDocument(id);
+
+            var properties = new Dictionary<string, object>();
+            properties["id"] = id;
+            properties["age"] = 20;
+            properties["name"] = "Qiane";
+            properties["city"] = new List<string> { "NewYork" };
+            document.PutProperties(properties);
+            return document;
+        }
+
+
+
+        /// <summary>
+        /// Create a new document in the database and populate some fields
+        /// </summary>
+        /// <param name="database"></param>
+        public static IDocument CreateDocument5(IDatabase database)
+        {
+            string id = "5";
+            var document = database.GetDocument(id);
+
+            var properties = new Dictionary<string, object>();
+            properties["id"] = id;
+            properties["age"] = 19;
+            properties["name"] = "Paula";
+            properties["city"] = new List<string> { "Madrid" };
+            document.PutProperties(properties);
+            return document;
         }
 
         /// <summary>

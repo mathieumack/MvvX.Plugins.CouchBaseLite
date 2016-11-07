@@ -48,6 +48,10 @@
     <Compile Include="Documents\IDocument.cs" />
     <Compile Include="Database\IDatabase.cs" />
     <Compile Include="IndexUpdateMode.cs" />
+    <Compile Include="Managers\DateTimeHandling.cs" />
+    <Compile Include="Managers\IJsonSerializer.cs" />
+    <Compile Include="Managers\JsonSerializationSettings.cs" />
+    <Compile Include="Managers\JsonToken.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\ILiveQuery.cs" />

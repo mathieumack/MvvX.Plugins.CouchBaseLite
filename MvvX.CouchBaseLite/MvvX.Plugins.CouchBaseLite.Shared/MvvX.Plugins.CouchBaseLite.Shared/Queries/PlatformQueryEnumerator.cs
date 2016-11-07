@@ -20,6 +20,11 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
 
         public PlatformQueryEnumerator(QueryEnumerator queryEnumerator, IDatabase database)
         {
+            if(queryEnumerator == null)
+            {
+                throw new ArgumentNullException("queryEnumerator should not be null");
+            }
+
             this.queryEnumerator = queryEnumerator;
             this.database = database;
         }
@@ -40,7 +45,10 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
         {
             get
             {
-                return new PlatformQueryRow(queryEnumerator.Current, database);
+                if (queryEnumerator.Current == null)
+                    return null;
+                else
+                    return new PlatformQueryRow(queryEnumerator.Current, database);
             }
         }
 
@@ -83,7 +91,12 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
         [Obsolete("Use LINQ ElementAt")]
         public IQueryRow GetRow(int index)
         {
-            return new PlatformQueryRow(this.queryEnumerator.GetRow(index), this.database);
+            var row = this.queryEnumerator.GetRow(index);
+
+            if (row != null)
+                return new PlatformQueryRow(row, this.database);
+            else
+                return null;
         }
 
         public IEnumerator<IQueryRow> GetEnumerator()
@@ -95,7 +108,14 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
         {
             while (iterator.MoveNext())
             {
-                yield return new PlatformQueryRow(iterator.Current, database);
+                IQueryRow row;
+
+                if (iterator.Current != null)
+                    row = new PlatformQueryRow(iterator.Current, database);
+                else
+                    row = null;
+
+                yield return row;
             }
         }
 

@@ -22,6 +22,11 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
 
         public PlatformQueryRow(QueryRow queryRow, IDatabase database)
         {
+            if (queryRow == null)
+            {
+                throw new ArgumentNullException("queryEnumerator should not be null");
+            }
+
             this.queryRow = queryRow;
             this.database = database;
         }
@@ -42,7 +47,10 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
         {
             get
             {
-                return new PlatformDocument(queryRow.Document);
+                if (queryRow.Document == null)
+                    return null;
+                else
+                    return new PlatformDocument(queryRow.Document);
             }
         }
 

@@ -20,6 +20,11 @@ namespace MvvX.Plugins.CouchBaseLite.Shared.Queries
         public PlatformLiveQuery(LiveQuery liveQuery, IDatabase database)
             : base(liveQuery, database)
         {
+            if (liveQuery == null)
+            {
+                throw new ArgumentNullException("liveQuery should not be null");
+            }
+
             this.liveQuery = liveQuery;
             this.database = database;
         }
@@ -38,7 +43,11 @@ namespace MvvX.Plugins.CouchBaseLite.Shared.Queries
         
         public new IQueryEnumerator Run()
         {
-            return new PlatformQueryEnumerator(this.liveQuery.Run(), this.database);
+            QueryEnumerator queryEnum = this.liveQuery.Run();
+            if (queryEnum == null)
+                return null;
+            else
+                return new PlatformQueryEnumerator(queryEnum, this.database);
         }
 
         public IQueryEnumerator Rows
