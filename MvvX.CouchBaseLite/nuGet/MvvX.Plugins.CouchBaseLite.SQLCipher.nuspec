@@ -2,7 +2,7 @@
  <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>MvvX.Plugins.CouchBaseLite.SQLCipher</id>
-        <version>2.2.0.21350</version>
+        <version>2.3.0.30460</version>
         <title>CouchBaseLite with SQLCipher (MvvmCross plugin)</title>
         <authors>MACK Mathieu</authors>
         <owners>MACK Mathieu</owners>
