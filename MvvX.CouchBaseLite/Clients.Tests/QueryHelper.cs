@@ -29,8 +29,8 @@ namespace Clients.Tests
                         }
                         catch (InvalidCastException ex)
                         {
-                                    // If invalid format, ignore document
-                                }
+                            // If invalid format, ignore document
+                        }
                     }
                 }
             , version);
@@ -52,7 +52,7 @@ namespace Clients.Tests
                         try
                         {
                             IList<string> cities = jsonSerializer.ConvertToList<string>(citiesObject);
-                            foreach(var city in cities)
+                            foreach (var city in cities)
                             {
                                 emit(city, doc["id"]);
                             }

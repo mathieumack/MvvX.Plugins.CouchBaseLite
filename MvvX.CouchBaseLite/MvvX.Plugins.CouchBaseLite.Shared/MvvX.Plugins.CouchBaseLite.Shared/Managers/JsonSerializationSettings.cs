@@ -1,84 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+//using MvvX.Plugins.CouchBaseLite.Managers;
 
-namespace MvvX.Plugins.CouchBaseLite.Managers
-{
-    /// <summary>
-    /// Specifies methods for deserializing date times that are written as strings
-    /// </summary>
-    public enum DateTimeHandling
-    {
-        /// <summary>
-        /// Deserialize to System.DateTime (local time zone)
-        /// </summary>
-        UseDateTime,
+//namespace MvvX.Plugins.CouchBaseLite.Managers
+//{
+//    /// <summary>
+//    /// A struct containing options for JSON serialization and deserialization
+//    /// </summary>
+//    public struct JsonSerializationSettings
+//    {
+//        /// <summary>
+//        /// Gets or sets how the serializer will handle deserializing date times.
+//        /// </summary>
+//        public DateTimeHandling DateTimeHandling { get; set; }
 
-        /// <summary>
-        /// Deserialize to System.DateTimeOffset (embedded time zone)
-        /// </summary>
-        UseDateTimeOffset,
+//        #region Operators
+//#pragma warning disable 1591
 
-        /// <summary>
-        /// Don't deserialize (keep as a date-time string).
-        /// </summary>
-        /// <remarks>
-        /// WARNING: This will cause any DateTime or DateTimeOffset values to be
-        /// returned as strings.  Make sure you know what you are doing
-        /// </remarks>
-        Ignore
-    }
+//        public static bool operator ==(JsonSerializationSettings x, JsonSerializationSettings y)
+//        {
+//            return x.Equals(y);
+//        }
 
-    /// <summary>
-    /// A struct containing options for JSON serialization and deserialization
-    /// </summary>
-    public struct JsonSerializationSettings
-    {
+//        public static bool operator !=(JsonSerializationSettings x, JsonSerializationSettings y)
+//        {
+//            return !x.Equals(y);
+//        }
 
-        /// <summary>
-        /// Gets or sets how the serializer will handle deserializing date times.
-        /// </summary>
-        public DateTimeHandling DateTimeHandling { get; set; }
+//        #endregion
 
-        #region Operators
-#pragma warning disable 1591
+//        #region Overrides
 
-        public static bool operator ==(JsonSerializationSettings x, JsonSerializationSettings y)
-        {
-            return x.Equals(y);
-        }
+//        public override bool Equals(object obj)
+//        {
+//            if (!(obj is JsonSerializationSettings))
+//            {
+//                return false;
+//            }
 
-        public static bool operator !=(JsonSerializationSettings x, JsonSerializationSettings y)
-        {
-            return !x.Equals(y);
-        }
+//            return DateTimeHandling == ((JsonSerializationSettings)obj).DateTimeHandling;
+//        }
 
-        #endregion
+//        public override int GetHashCode()
+//        {
+//            return DateTimeHandling.GetHashCode();
+//        }
 
-        #region Overrides
+//        public override string ToString()
+//        {
+//            return String.Format("JsonSerializationSettings[DateTimeHandling={0}]", DateTimeHandling);
+//        }
 
-        public override bool Equals(object obj)
-        {
-            if (!(obj is JsonSerializationSettings))
-            {
-                return false;
-            }
-
-            return DateTimeHandling == ((JsonSerializationSettings)obj).DateTimeHandling;
-        }
-
-        public override int GetHashCode()
-        {
-            return DateTimeHandling.GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            return String.Format("JsonSerializationSettings[DateTimeHandling={0}]", DateTimeHandling);
-        }
-
-        #endregion
-    }
-}
+//        #endregion
+//    }
+//}
