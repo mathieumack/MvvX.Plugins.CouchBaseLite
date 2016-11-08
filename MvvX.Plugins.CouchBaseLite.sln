@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvX.Plugins.CouchBaseLite", "MvvX.Plugins.CouchBaseLite\MvvX.Plugins.CouchBaseLite.csproj", "{91272C39-1BBD-4478-BCCD-44A4F9EDB64D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvX.Plugins.CouchBaseLite", "MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite\MvvX.Plugins.CouchBaseLite.csproj", "{91272C39-1BBD-4478-BCCD-44A4F9EDB64D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvX.Plugins.CouchBaseLite.Wpf", "MvvX.Plugins.CouchBaseLite.WPF\MvvX.Plugins.CouchBaseLite.Wpf.csproj", "{E10E3C57-7E48-41E8-8E38-48963A1E0408}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvX.Plugins.CouchBaseLite.Wpf", "MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite.WPF\MvvX.Plugins.CouchBaseLite.Wpf.csproj", "{E10E3C57-7E48-41E8-8E38-48963A1E0408}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Windows", "Client.Windows\Client.Windows.csproj", "{5DF015D2-E7BF-45B3-9E67-E9120C6A8B90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Windows", "MvvX.CouchBaseLite\Client.Windows\Client.Windows.csproj", "{5DF015D2-E7BF-45B3-9E67-E9120C6A8B90}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C9B8BFC9-5990-4606-BA44-20DB2AD68A5A}"
 EndProject
@@ -17,24 +17,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interface", "Interface", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implements", "Implements", "{86B44DE2-C121-462A-A98F-B67311A09194}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Droid", "Client.Droid\Client.Droid.csproj", "{EF8C6B0F-3F7F-4365-AE68-5DC1418E34B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Droid", "MvvX.CouchBaseLite\Client.Droid\Client.Droid.csproj", "{EF8C6B0F-3F7F-4365-AE68-5DC1418E34B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvX.Plugins.CouchBaseLite.Droid", "MvvX.Plugins.CouchBaseLite.Droid\MvvX.Plugins.CouchBaseLite.Droid.csproj", "{8E74ABA6-B51F-47ED-8C62-EF6843AABE10}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvX.Plugins.CouchBaseLite.Droid", "MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite.Droid\MvvX.Plugins.CouchBaseLite.Droid.csproj", "{8E74ABA6-B51F-47ED-8C62-EF6843AABE10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvX.Plugins.CouchBaseLite.Touch", "MvvX.Plugins.CouchBaseLite.Touch\MvvX.Plugins.CouchBaseLite.Touch.csproj", "{D806ED78-1C67-4CC7-A1C6-C7656F53A948}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvX.Plugins.CouchBaseLite.Touch", "MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite.Touch\MvvX.Plugins.CouchBaseLite.Touch.csproj", "{D806ED78-1C67-4CC7-A1C6-C7656F53A948}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MvvX.Plugins.CouchBaseLite.Shared", "MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.shproj", "{CC288502-B308-4A43-95A8-689F7E4F9CE9}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MvvX.Plugins.CouchBaseLite.Shared", "MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.shproj", "{CC288502-B308-4A43-95A8-689F7E4F9CE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clients.Tests", "Clients.Tests\Clients.Tests.csproj", "{021C1039-4E38-4518-8B2F-7FF3B6757AEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clients.Tests", "MvvX.CouchBaseLite\Clients.Tests\Clients.Tests.csproj", "{021C1039-4E38-4518-8B2F-7FF3B6757AEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Tests.UnitTest", "Client.Tests.UnitTest\Client.Tests.UnitTest.csproj", "{C3A7F659-BE74-4E5F-BE0A-CF32A0F67BCF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Tests.UnitTest", "MvvX.CouchBaseLite\Client.Tests.UnitTest\Client.Tests.UnitTest.csproj", "{C3A7F659-BE74-4E5F-BE0A-CF32A0F67BCF}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.projitems*{8e74aba6-b51f-47ed-8c62-ef6843aabe10}*SharedItemsImports = 4
-		MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.projitems*{cc288502-b308-4a43-95a8-689f7e4f9ce9}*SharedItemsImports = 13
-		MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.projitems*{d806ed78-1c67-4cc7-a1c6-c7656f53a948}*SharedItemsImports = 4
-		MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.projitems*{e10e3c57-7e48-41e8-8e38-48963a1e0408}*SharedItemsImports = 4
+		MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.projitems*{8e74aba6-b51f-47ed-8c62-ef6843aabe10}*SharedItemsImports = 4
+		MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.projitems*{e10e3c57-7e48-41e8-8e38-48963a1e0408}*SharedItemsImports = 4
+		MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.projitems*{d806ed78-1c67-4cc7-a1c6-c7656f53a948}*SharedItemsImports = 4
+		MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.projitems*{cc288502-b308-4a43-95a8-689f7e4f9ce9}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
