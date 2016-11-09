@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Documents\PlatformRevision.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Documents\PlatformSavedRevision.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Documents\PlatformUnsavedRevision.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\ExceptionExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Managers\JsonSerializationSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Managers\PlatformNewtonsoftJsonSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Plugin.cs" />

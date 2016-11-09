@@ -36,6 +36,7 @@
     <DocumentationFile>bin\Release\MvvX.Plugins.CouchBaseLite.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CouchbaseLiteConcurrentException.cs" />
     <Compile Include="CouchbaseLiteException.cs" />
     <Compile Include="Database\DatabaseChangeEventArgs.cs" />
     <Compile Include="Database\IDatabaseOptions.cs" />
