@@ -2,6 +2,8 @@
 using MvvX.Plugins.CouchBaseLite.Database;
 using MvvX.Plugins.CouchBaseLite.Queries;
 using MvvX.Plugins.CouchBaseLite.Shared.Queries;
+using MvvX.Plugins.CouchBaseLite.Utils;
+
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -316,7 +318,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Queries
             }
             catch (Couchbase.Lite.CouchbaseLiteException ex)
             {
-                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+                throw ex.GetCouchbaseLiteException();
             }
         }
 

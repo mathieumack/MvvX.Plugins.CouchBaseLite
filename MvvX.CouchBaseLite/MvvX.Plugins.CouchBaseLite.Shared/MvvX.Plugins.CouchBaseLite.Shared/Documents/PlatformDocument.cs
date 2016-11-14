@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Couchbase.Lite;
 using MvvX.Plugins.CouchBaseLite.Documents;
+using MvvX.Plugins.CouchBaseLite.Utils;
 using System.Linq;
 using System.IO;
 
@@ -90,7 +91,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
                 }
                 catch(Couchbase.Lite.CouchbaseLiteException ex)
                 {
-                    throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+                    throw ex.GetCouchbaseLiteException();
                 }
             }
         }
@@ -105,7 +106,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
                 }
                 catch (Couchbase.Lite.CouchbaseLiteException ex)
                 {
-                    throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+                    throw ex.GetCouchbaseLiteException();
                 }
             }
         }
@@ -120,7 +121,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
                 }
                 catch (Couchbase.Lite.CouchbaseLiteException ex)
                 {
-                    throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+                    throw ex.GetCouchbaseLiteException();
                 }
             }
         }
@@ -143,7 +144,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
             }
             catch (Couchbase.Lite.CouchbaseLiteException ex)
             {
-                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+                throw ex.GetCouchbaseLiteException();
             }
         }
 
@@ -155,7 +156,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
             }
             catch (Couchbase.Lite.CouchbaseLiteException ex)
             {
-                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+                throw ex.GetCouchbaseLiteException();
             }
         }
 
@@ -168,7 +169,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
             }
             catch (Couchbase.Lite.CouchbaseLiteException ex)
             {
-                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+                throw ex.GetCouchbaseLiteException();
             }
         }
 
@@ -183,7 +184,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
             }
             catch (Couchbase.Lite.CouchbaseLiteException ex)
             {
-                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+                throw ex.GetCouchbaseLiteException();
             }
         }
 
@@ -228,7 +229,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Documents
             }
             catch (Couchbase.Lite.CouchbaseLiteException ex)
             {
-                throw new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+                throw ex.GetCouchbaseLiteException();
             }
         }
 

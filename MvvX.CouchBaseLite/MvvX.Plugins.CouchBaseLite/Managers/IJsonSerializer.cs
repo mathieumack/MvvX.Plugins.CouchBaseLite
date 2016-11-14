@@ -14,11 +14,6 @@ namespace MvvX.Plugins.CouchBaseLite.Managers
     public interface IJsonSerializer : IDisposable
     {
         /// <summary>
-        /// Gets or sets the settings to apply to the serializer
-        /// </summary>
-        //IJsonSerializationSettings Settings { get; set; }
-
-        /// <summary>
         /// Gets the current token when parsing in streaming mode
         /// </summary>
         JsonToken CurrentToken { get; }
