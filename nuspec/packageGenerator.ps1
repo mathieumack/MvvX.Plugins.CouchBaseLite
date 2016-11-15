@@ -2,7 +2,7 @@ $location  = Get-Location
 
 $location.Path
 
-$strPath = $location.Path + '\..\MvvX.Plugins.CouchBaseLite\bin\Release\MvvX.Plugins.CouchBaseLite.dll'
+$strPath = $location.Path + '\..\MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite\bin\Release\MvvX.Plugins.CouchBaseLite.dll'
 
 $strPath
 
@@ -18,7 +18,6 @@ Foreach-Object {$_ -replace "(<version>([0-9.]+)<\/version>)", "<version>$Assemb
 Set-Content $nuSpecFile
 
 .\NuGet pack MvvX.Plugins.CouchBaseLite.nuspec
-
 
 $nuSpecFile =  $location.Path + '\MvvX.Plugins.CouchBaseLite.ForestDB.nuspec'
 
