@@ -17,8 +17,8 @@ namespace Client.Tests.UnitTest
         [ClassInitialize()]
         public static void InitializeClass(TestContext testContext)
         {
-            dBFolderPath = Path.Combine(testContext.TestResultsDirectory, "forestDBFolder");
-            storage = MvvX.Plugins.CouchBaseLite.Storages.StorageTypes.ForestDb;
+            dBFolderPath = Path.Combine(testContext.TestResultsDirectory, "sqliteDBFolder");
+            storage = MvvX.Plugins.CouchBaseLite.Storages.StorageTypes.Sqlite;
         }
 
         [TestInitialize()]
