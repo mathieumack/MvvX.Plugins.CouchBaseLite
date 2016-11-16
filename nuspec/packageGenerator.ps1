@@ -7,9 +7,9 @@ gci env: | sort name
 $location  = $env:APPVEYOR_BUILD_FOLDER
 
 $locationNuspec = $location + "\nuspec"
-'$locationNuspec'
+$locationNuspec
 	
-Set-Location -Path '$locationNuspec'
+Set-Location -Path $locationNuspec
 
 "Packaging to nuget..."
 "Build folder : " + $location
