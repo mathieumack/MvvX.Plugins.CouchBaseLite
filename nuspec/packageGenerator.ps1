@@ -1,38 +1,32 @@
-$location  = Get-Location
+Get-Childitem env:
+gci env: | sort name
 
 "Packaging to nuget..."
-	
-$location.Path
+$ProductVersion = $env:APPVEYOR_BUILD_VERSION
 
-$strPath = $location.Path + '\MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite\bin\Release\MvvX.Plugins.CouchBaseLite.dll'
-
-$VersionInfos = [System.Diagnostics.FileVersionInfo]::GetVersionInfo($strPath)
-$ProductVersion = $VersionInfos.ProductVersion
-"Product version : " + $ProductVersion
-
-$nuSpecFile =  $location.Path + '\nuspec\MvvX.Plugins.CouchBaseLite.nuspec'
+$nuSpecFile =  $location.Path + '\MvvX.Plugins.CouchBaseLite.nuspec'
 
 (Get-Content $nuSpecFile) | 
 Foreach-Object {$_ -replace "(<version>([0-9.]+)<\/version>)", "<version>$ProductVersion</version>" } | 
 Set-Content $nuSpecFile
 
-nuspec\NuGet pack nuspec\MvvX.Plugins.CouchBaseLite.nuspec
+.\NuGet pack MvvX.Plugins.CouchBaseLite.nuspec
 
-$nuSpecFile =  $location.Path + '\nuspec\MvvX.Plugins.CouchBaseLite.ForestDB.nuspec'
-
-(Get-Content $nuSpecFile) | 
-Foreach-Object {$_ -replace "(<version>([0-9.]+)<\/version>)", "<version>$ProductVersion</version>" } | 
-Set-Content $nuSpecFile
-
-nuspec\NuGet pack nuspec\MvvX.Plugins.CouchBaseLite.ForestDB.nuspec
-
-$nuSpecFile =  $location.Path + '\nuspec\MvvX.Plugins.CouchBaseLite.SQLCipher.nuspec'
+$nuSpecFile =  $location.Path + '\MvvX.Plugins.CouchBaseLite.ForestDB.nuspec'
 
 (Get-Content $nuSpecFile) | 
 Foreach-Object {$_ -replace "(<version>([0-9.]+)<\/version>)", "<version>$ProductVersion</version>" } | 
 Set-Content $nuSpecFile
 
-nuspec\NuGet pack nuspec\MvvX.Plugins.CouchBaseLite.SQLCipher.nuspec
+.\NuGet pack MvvX.Plugins.CouchBaseLite.ForestDB.nuspec
+
+$nuSpecFile =  $location.Path + '\MvvX.Plugins.CouchBaseLite.SQLCipher.nuspec'
+
+(Get-Content $nuSpecFile) | 
+Foreach-Object {$_ -replace "(<version>([0-9.]+)<\/version>)", "<version>$ProductVersion</version>" } | 
+Set-Content $nuSpecFile
+
+.\NuGet pack MvvX.Plugins.CouchBaseLite.SQLCipher.nuspec
 
 #$apiKey = Read-Host 'Please set apiKey to publish to nuGet :'
 	

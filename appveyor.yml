@@ -38,4 +38,4 @@ before_build:
 build:
   verbosity: minimal
 on_success:
-- ps: '& packageGenerator.ps1'
+- ps: '& "nuspec\packageGenerator.ps1"'
