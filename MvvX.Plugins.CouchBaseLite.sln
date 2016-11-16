@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvX.Plugins.CouchBaseLite", "MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite\MvvX.Plugins.CouchBaseLite.csproj", "{91272C39-1BBD-4478-BCCD-44A4F9EDB64D}"
 EndProject
@@ -32,9 +32,9 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.projitems*{8e74aba6-b51f-47ed-8c62-ef6843aabe10}*SharedItemsImports = 4
-		MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.projitems*{e10e3c57-7e48-41e8-8e38-48963a1e0408}*SharedItemsImports = 4
-		MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.projitems*{d806ed78-1c67-4cc7-a1c6-c7656f53a948}*SharedItemsImports = 4
 		MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.projitems*{cc288502-b308-4a43-95a8-689f7e4f9ce9}*SharedItemsImports = 13
+		MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.projitems*{d806ed78-1c67-4cc7-a1c6-c7656f53a948}*SharedItemsImports = 4
+		MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared\MvvX.Plugins.CouchBaseLite.Shared.projitems*{e10e3c57-7e48-41e8-8e38-48963a1e0408}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
