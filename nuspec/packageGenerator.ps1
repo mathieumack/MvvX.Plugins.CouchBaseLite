@@ -1,3 +1,9 @@
+"Showing environnement variables..."
+	
+Get-Childitem env:
+
+gci env: | sort name
+	
 $location  = $env:APPVEYOR_BUILD_FOLDER
 
 "Packaging to nuget..."
@@ -27,9 +33,9 @@ Foreach-Object {$_ -replace "(<version>([0-9.]+)<\/version>)", "<version>$Produc
 Set-Content $nuSpecFile
 
 "Generate nuget packages ..."
-& '$location\nuspec\NuGet.exe pack MvvX.Plugins.CouchBaseLite.nuspec'
-& '$location\nuspec\NuGet.exe pack MvvX.Plugins.CouchBaseLite.ForestDB.nuspec'	
-& '$location\nuspec\NuGet.exe pack MvvX.Plugins.CouchBaseLite.SQLCipher.nuspec'
+.\NuGet.exe pack MvvX.Plugins.CouchBaseLite.nuspec
+.\NuGet.exe pack MvvX.Plugins.CouchBaseLite.ForestDB.nuspec
+.\NuGet.exe pack MvvX.Plugins.CouchBaseLite.SQLCipher.nuspec
 
 $apiKey = $env:NuGetApiKey
 	
