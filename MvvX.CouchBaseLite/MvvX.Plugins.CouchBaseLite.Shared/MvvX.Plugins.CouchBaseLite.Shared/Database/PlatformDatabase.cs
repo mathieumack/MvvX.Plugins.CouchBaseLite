@@ -22,6 +22,9 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Database
 
         public PlatformDatabase(Couchbase.Lite.Database database)
         {
+            if (database == null)
+                throw new ArgumentNullException("database");
+
             this.database = database;
             this.database.Changed += Database_Changed;
         }

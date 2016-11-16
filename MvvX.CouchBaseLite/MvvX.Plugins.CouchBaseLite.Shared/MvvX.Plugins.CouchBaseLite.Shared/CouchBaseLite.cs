@@ -15,23 +15,31 @@ namespace MvvX.Plugins.CouchBaseLite.Platform
         /// <summary>
         /// Folder path to the database
         /// </summary>
-        private string workingFolderPath;
+        private string workingFolderPath = null;
 
+        private Manager manager = null;
         /// <summary>
-        /// Name of the database
+        /// Manager (singleton)
         /// </summary>
-        private string databaseName;
+        private Manager Manager
+        { 
+            get {
+                if(manager == null)
+                {
+                    if (string.IsNullOrEmpty(workingFolderPath))
+                        throw new InvalidOperationException("The method Initialize() has not been called");
 
-        /// <summary>
-        /// Manager
-        /// </summary>
-        private Manager manager;
+                    var directoryInfo = new DirectoryInfo(workingFolderPath);
+                    manager = new Manager(directoryInfo, Manager.DefaultOptions);
+                }
+                return manager;
+            }
+        }
 
         #region Constructor
 
         public CouchBaseLite()
         {
-            this.manager = null;
         }
 
         #endregion
@@ -43,22 +51,29 @@ namespace MvvX.Plugins.CouchBaseLite.Platform
             return new PlatformDatabaseOptions();
         }
 
-        public IDatabase CreateConnection(string workingFolderPath, string databaseName, IDatabaseOptions databaseOptions)
+        public void Initialize(string workingFolderPath)
         {
-            this.workingFolderPath = workingFolderPath;
-            this.databaseName = databaseName;
+            if(string.IsNullOrEmpty(workingFolderPath))
+                throw new ArgumentNullException("workingFolderPath");
+            if (this.workingFolderPath != null)
+                throw new InvalidOperationException("Initialze method already called");
 
+            this.workingFolderPath = workingFolderPath;
+        }
+
+        public IDatabase CreateConnection(string databaseName, IDatabaseOptions databaseOptions)
+        {
             try
             {
-                var directoryInfo = new DirectoryInfo(workingFolderPath);
-                this.manager = new Manager(directoryInfo, Manager.DefaultOptions);
-
                 var options = new DatabaseOptions();
 
                 options.Create = databaseOptions.Create;
 
                 if (databaseOptions.StorageType == Storages.StorageTypes.ForestDb)
+                {
                     options.StorageType = StorageEngineTypes.ForestDB;
+                    Couchbase.Lite.Storage.ForestDB.Plugin.Register();
+                }
                 else
                     options.StorageType = StorageEngineTypes.SQLite;
 
@@ -77,8 +92,12 @@ namespace MvvX.Plugins.CouchBaseLite.Platform
                         break;
                 }
 
-                var database = manager.OpenDatabase(databaseName.ToLower(), options);
-                return new PlatformDatabase(database);
+                var database = Manager.OpenDatabase(databaseName.ToLower(), options);
+
+                if (database != null)
+                    return new PlatformDatabase(database);
+                else
+                    return null;
             }
             catch (Exception e)
             {

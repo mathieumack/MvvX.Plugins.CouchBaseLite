@@ -37,8 +37,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Couchbase.Lite, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Couchbase.Lite.1.3.1\lib\net45\Couchbase.Lite.dll</HintPath>
+    <Reference Include="Couchbase.Lite.Storage.ForestDB, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Couchbase.Lite.Storage.ForestDB.1.3.1\lib\net45\Couchbase.Lite.Storage.ForestDB.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Couchbase.Lite.Storage.SystemSQLite, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -88,6 +88,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CBLTests.cs" />
+    <Compile Include="CBLSqliteTests.cs" />
+    <Compile Include="CBLForestDBTests.cs" />
     <Compile Include="ViewTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -135,7 +138,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\SQLitePCL.native.sqlite3.v110_xp.0.9.1\build\SQLitePCL.native.sqlite3.v110_xp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\SQLitePCL.native.sqlite3.v110_xp.0.9.1\build\SQLitePCL.native.sqlite3.v110_xp.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Couchbase.Lite.Storage.ForestDB.1.3.1\build\net45\Couchbase.Lite.Storage.ForestDB.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Couchbase.Lite.Storage.ForestDB.1.3.1\build\net45\Couchbase.Lite.Storage.ForestDB.targets'))" />
   </Target>
+  <Import Project="..\..\packages\Couchbase.Lite.Storage.ForestDB.1.3.1\build\net45\Couchbase.Lite.Storage.ForestDB.targets" Condition="Exists('..\..\packages\Couchbase.Lite.Storage.ForestDB.1.3.1\build\net45\Couchbase.Lite.Storage.ForestDB.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

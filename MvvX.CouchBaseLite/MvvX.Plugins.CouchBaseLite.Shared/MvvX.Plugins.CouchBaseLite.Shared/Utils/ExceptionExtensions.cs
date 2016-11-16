@@ -10,17 +10,18 @@ namespace MvvX.Plugins.CouchBaseLite.Utils
         {
             CouchbaseLiteException res = null;
 
-            if (string.IsNullOrEmpty(ex.Message))
+            if (!string.IsNullOrEmpty(ex.Message))
             {
-                res = null;
+                res = new CouchbaseLiteException(ex.Message, ex);
             }
             else if (ex.Message.Equals("Error beginning begin transaction"))
             {
                 res = new CouchbaseLiteConcurrentException(ex.Message, ex);
             }
-
-            if (res == null)
+            else
+            {
                 res = new CouchbaseLiteException("An exception occured, see inner exception.", ex);
+            }
 
             return res;
         }

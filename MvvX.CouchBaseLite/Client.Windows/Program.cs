@@ -19,12 +19,14 @@ namespace Client.Windows
 
             using (var service = new CouchBaseLite())
             {
+                service.Initialize(databaseFolderPath);
+
                 var databaseOptions = service.CreateDatabaseOptions();
 
                 databaseOptions.Create = true;
                 databaseOptions.StorageType = MvvX.Plugins.CouchBaseLite.Storages.StorageTypes.Sqlite;
 
-                var database = service.CreateConnection(databaseFolderPath, databaseName, databaseOptions);
+                var database = service.CreateConnection(databaseName, databaseOptions);
 
                 if (database != null)
                 {
