@@ -10,7 +10,7 @@
         <projectUrl>https://github.com/mathieumack/MvvX.CouchBaseLite</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>This package contains the 'CouchBaseLite' plugin for MvvmCross.</description>
-        <tags>mvvm mvvmcross xamarin monodroid monotouch wpf netcore wp wpdev</tags>
+        <tags>mvvm mvvmcross xamarin monodroid monotouch wpf couchbase</tags>
         <dependencies>
           <group>
             <!-- Always include regardless of target framework -->

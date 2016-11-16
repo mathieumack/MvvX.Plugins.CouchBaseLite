@@ -1,9 +1,4 @@
-"Showing environnement variables..."
-	
-Get-Childitem env:
 
-gci env: | sort name
-	
 $location  = $env:APPVEYOR_BUILD_FOLDER
 
 $locationNuspec = $location + "\nuspec"
