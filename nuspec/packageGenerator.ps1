@@ -6,6 +6,10 @@ gci env: | sort name
 	
 $location  = $env:APPVEYOR_BUILD_FOLDER
 
+$locationNuspec = $location + "\nuspec"
+	
+Set-Location -Path $$locationNuspec
+
 "Packaging to nuget..."
 "Build folder : " + $location
 
@@ -17,17 +21,17 @@ $ProductVersion = $VersionInfos.ProductVersion
 
 "Update nuspec versions ..."
 	
-$nuSpecFile =  $location + '\nuspec\MvvX.Plugins.CouchBaseLite.nuspec'
+$nuSpecFile =  $locationNuspec + '\MvvX.Plugins.CouchBaseLite.nuspec'
 (Get-Content $nuSpecFile) | 
 Foreach-Object {$_ -replace "(<version>([0-9.]+)<\/version>)", "<version>$ProductVersion</version>" } | 
 Set-Content $nuSpecFile
 
-$nuSpecFile =  $location + '\nuspec\MvvX.Plugins.CouchBaseLite.ForestDB.nuspec'
+$nuSpecFile =  $locationNuspec + '\MvvX.Plugins.CouchBaseLite.ForestDB.nuspec'
 (Get-Content $nuSpecFile) | 
 Foreach-Object {$_ -replace "(<version>([0-9.]+)<\/version>)", "<version>$ProductVersion</version>" } | 
 Set-Content $nuSpecFile
 
-$nuSpecFile =  $location + '\nuspec\MvvX.Plugins.CouchBaseLite.SQLCipher.nuspec'
+$nuSpecFile =  $locationNuspec + '\MvvX.Plugins.CouchBaseLite.SQLCipher.nuspec'
 (Get-Content $nuSpecFile) | 
 Foreach-Object {$_ -replace "(<version>([0-9.]+)<\/version>)", "<version>$ProductVersion</version>" } | 
 Set-Content $nuSpecFile
