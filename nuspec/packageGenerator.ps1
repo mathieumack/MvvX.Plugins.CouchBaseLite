@@ -27,9 +27,9 @@ Foreach-Object {$_ -replace "(<version>([0-9.]+)<\/version>)", "<version>$Produc
 Set-Content $nuSpecFile
 
 "Generate nuget packages ..."
-.\NuGet.exe pack MvvX.Plugins.CouchBaseLite.nuspec
-.\NuGet.exe pack MvvX.Plugins.CouchBaseLite.ForestDB.nuspec
-.\NuGet.exe pack MvvX.Plugins.CouchBaseLite.SQLCipher.nuspec
+& '$location\nuspec\NuGet.exe pack MvvX.Plugins.CouchBaseLite.nuspec'
+& '$location\nuspec\NuGet.exe pack MvvX.Plugins.CouchBaseLite.ForestDB.nuspec'	
+& '$location\nuspec\NuGet.exe pack MvvX.Plugins.CouchBaseLite.SQLCipher.nuspec'
 
 $apiKey = $env:NuGetApiKey
 	
