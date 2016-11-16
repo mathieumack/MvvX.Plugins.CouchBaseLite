@@ -2,7 +2,7 @@
  <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>MvvX.Plugins.CouchBaseLite</id>
-        <version>2.4.0.0</version>
+        <version>2.4.1.0</version>
         <title>CouchBaseLite (MvvmCross plugin)</title>
         <authors>MACK Mathieu</authors>
         <owners>MACK Mathieu</owners>

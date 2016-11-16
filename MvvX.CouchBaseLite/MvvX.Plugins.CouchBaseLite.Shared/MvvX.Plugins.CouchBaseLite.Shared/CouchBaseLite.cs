@@ -16,9 +16,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform
         /// Folder path to the database
         /// </summary>
         private string workingFolderPath = null;
-
-        private bool forestDBPluginInitialized = false;
-
+        
         private Manager manager = null;
         /// <summary>
         /// Manager (singleton)
@@ -74,11 +72,6 @@ namespace MvvX.Plugins.CouchBaseLite.Platform
                 if (databaseOptions.StorageType == Storages.StorageTypes.ForestDb)
                 {
                     options.StorageType = StorageEngineTypes.ForestDB;
-                    if (!forestDBPluginInitialized)
-                    {
-                        Couchbase.Lite.Storage.ForestDB.Plugin.Register();
-                        forestDBPluginInitialized = true;
-                    }
                 }
                 else
                     options.StorageType = StorageEngineTypes.SQLite;

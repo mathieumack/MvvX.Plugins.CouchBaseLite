@@ -20,6 +20,7 @@ namespace Client.Tests.UnitTest
         {
             dBFolderPath = Path.Combine(testContext.TestResultsDirectory, "forestDBFolder");
             storage = MvvX.Plugins.CouchBaseLite.Storages.StorageTypes.ForestDb;
+            Couchbase.Lite.Storage.ForestDB.Plugin.Register();
         }
         
         [TestInitialize()]
