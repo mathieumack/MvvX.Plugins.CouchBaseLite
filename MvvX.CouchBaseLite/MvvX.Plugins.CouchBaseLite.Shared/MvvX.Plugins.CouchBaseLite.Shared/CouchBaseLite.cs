@@ -7,6 +7,7 @@ using MvvmCross.Platform;
 using Couchbase.Lite.Store;
 using MvvX.Plugins.CouchBaseLite.Store;
 using MvvX.Plugins.CouchBaseLite.Shared.Database;
+using Couchbase.Lite.Util;
 
 namespace MvvX.Plugins.CouchBaseLite.Platform
 {
@@ -40,6 +41,11 @@ namespace MvvX.Plugins.CouchBaseLite.Platform
 
         public CouchBaseLite()
         {
+            #if DEBUG
+            Log.Disabled = false;
+            #else
+            Log.Disabled = true;
+            #endif
         }
 
         #endregion
