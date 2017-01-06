@@ -41,11 +41,7 @@ namespace MvvX.Plugins.CouchBaseLite.Platform
 
         public CouchBaseLite()
         {
-            #if DEBUG
-            Log.Disabled = false;
-            #else
-            Log.Disabled = true;
-            #endif
+
         }
 
         #endregion
@@ -109,6 +105,12 @@ namespace MvvX.Plugins.CouchBaseLite.Platform
                 Mvx.Trace("Error getting database : " + e.Message);
                 throw;
             }
+        }
+
+
+        public void ManageLog(bool disabled)
+        {
+            Log.Disabled = disabled;
         }
 
         public void Dispose()

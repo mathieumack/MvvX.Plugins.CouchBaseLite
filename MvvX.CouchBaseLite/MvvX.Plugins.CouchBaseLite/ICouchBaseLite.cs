@@ -29,5 +29,11 @@ namespace MvvX.Plugins.CouchBaseLite
         /// <param name="databaseOptions">Options for the database manager. Use CreateDatabaseOptions() to generate object</param>
         /// <exception cref="CouchbaseLiteException">Thrown if an issue occurs while gettings or createing the Couchbase.Lite.Database.</exception>
         IDatabase CreateConnection(string databaseName, IDatabaseOptions databaseOptions);
+
+        /// <summary>
+        /// Change the log visibility
+        /// </summary>
+        /// <param name="disabled"></param>
+        void ManageLog(bool disabled);
     }
 }
