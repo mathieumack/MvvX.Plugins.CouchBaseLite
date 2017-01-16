@@ -14,9 +14,6 @@
         <dependencies>
             <group>
                 <!-- Always include regardless of target framework -->
-                <dependency id="MvvmCross" version="4.2.2" />
-                <dependency id="MvvmCross.Binding" version="4.2.2" />
-                <dependency id="MvvmCross.Core" version="4.2.2" />
                 <dependency id="MvvmCross.Platform" version="4.2.2" />
                 <dependency id="Newtonsoft.Json" version="9.0.1" />
             </group>
