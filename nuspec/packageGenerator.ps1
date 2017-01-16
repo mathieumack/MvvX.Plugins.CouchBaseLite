@@ -9,7 +9,7 @@ Set-Location -Path $locationNuspec
 "Packaging to nuget..."
 "Build folder : " + $location
 
-$strPath = $location + '\MvvX.CouchBaseLite\MvvX.Plugins.CouchBaseLite\bin\Release\MvvX.Plugins.CouchBaseLite.dll'
+$strPath = $location + '\MvvX.Plugins.CouchBaseLite\bin\Release\MvvX.Plugins.CouchBaseLite.dll'
 
 $VersionInfos = [System.Diagnostics.FileVersionInfo]::GetVersionInfo($strPath)
 $ProductVersion = $VersionInfos.ProductVersion
@@ -19,17 +19,17 @@ $ProductVersion = $VersionInfos.ProductVersion
 	
 $nuSpecFile =  $locationNuspec + '\MvvX.Plugins.CouchBaseLite.nuspec'
 (Get-Content $nuSpecFile) | 
-Foreach-Object {$_ -replace "(<version>([0-9.]+)<\/version>)", "<version>$ProductVersion</version>" } | 
+Foreach-Object {$_ -replace "{BuildNumberVersion}", "$ProductVersion" } | 
 Set-Content $nuSpecFile
 
 $nuSpecFile =  $locationNuspec + '\MvvX.Plugins.CouchBaseLite.ForestDB.nuspec'
 (Get-Content $nuSpecFile) | 
-Foreach-Object {$_ -replace "(<version>([0-9.]+)<\/version>)", "<version>$ProductVersion</version>" } | 
+Foreach-Object {$_ -replace "{BuildNumberVersion}", "$ProductVersion" } | 
 Set-Content $nuSpecFile
 
 $nuSpecFile =  $locationNuspec + '\MvvX.Plugins.CouchBaseLite.SQLCipher.nuspec'
 (Get-Content $nuSpecFile) | 
-Foreach-Object {$_ -replace "(<version>([0-9.]+)<\/version>)", "<version>$ProductVersion</version>" } | 
+Foreach-Object {$_ -replace "{BuildNumberVersion}", "$ProductVersion" } | 
 Set-Content $nuSpecFile
 
 "Generate nuget packages ..."
