@@ -1,3 +1,6 @@
+write-host "**************************" -foreground "Cyan"
+write-host "*   Packaging to nuget   *" -foreground "Cyan"
+write-host "**************************" -foreground "Cyan"
 
 $location  = $env:APPVEYOR_BUILD_FOLDER
 
@@ -35,14 +38,14 @@ $nuSpecFile =  $locationNuspec + '\MvvX.Plugins.CouchBaseLite.SQLCipher.nuspec'
 Foreach-Object {$_ -replace "{BuildNumberVersion}", "$ProductVersion" } | 
 Set-Content $nuSpecFile
 
-"Generate nuget packages ..."
+write-host "Generate nuget packages" -foreground "Green"
 .\NuGet.exe pack MvvX.Plugins.CouchBaseLite.nuspec
 .\NuGet.exe pack MvvX.Plugins.CouchBaseLite.ForestDB.nuspec
 .\NuGet.exe pack MvvX.Plugins.CouchBaseLite.SQLCipher.nuspec
 
 $apiKey = $env:NuGetApiKey
 	
-"Publish packages ..."	
+write-host "Publish nuget packages" -foreground "Green"	
 .\NuGet push MvvX.Plugins.CouchBaseLite.$ProductVersion.nupkg -Source https://www.nuget.org/api/v2/package -ApiKey $apiKey
 .\NuGet push MvvX.Plugins.CouchBaseLite.ForestDB.$ProductVersion.nupkg -Source https://www.nuget.org/api/v2/package -ApiKey $apiKey
 .\NuGet push MvvX.Plugins.CouchBaseLite.SQLCipher.$ProductVersion.nupkg -Source https://www.nuget.org/api/v2/package -ApiKey $apiKey
