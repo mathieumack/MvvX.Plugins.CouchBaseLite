@@ -39,6 +39,14 @@ namespace MvvX.Plugins.CouchBaseLite.Shared.Documents
             }
         }
 
+        public bool IsDeletion
+        {
+            get
+            {
+                return documentchange.IsDeletion;
+            }
+        }
+
         public bool IsCurrentRevision
         {
             get

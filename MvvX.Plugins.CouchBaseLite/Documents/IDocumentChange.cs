@@ -20,6 +20,11 @@ namespace MvvX.Plugins.CouchBaseLite.Documents
         bool IsCurrentRevision { get; }
 
         /// <summary>
+        /// Gets whether or not this change is a deletion
+        /// </summary>
+        bool IsDeletion { get; }
+
+        /// <summary>
         /// ID of linked revision
         /// </summary>
         string RevisionId { get; }

@@ -6,13 +6,16 @@ $locationNuspec
 	
 Set-Location -Path $locationNuspec
 
+write-host "Update the nuget.exe file" -foreground "DarkGray"
+.\NuGet update -self
+
 "Packaging to nuget..."
 "Build folder : " + $location
 
 $strPath = $location + '\MvvX.Plugins.CouchBaseLite\bin\Release\MvvX.Plugins.CouchBaseLite.dll'
 
 $VersionInfos = [System.Diagnostics.FileVersionInfo]::GetVersionInfo($strPath)
-$ProductVersion = $VersionInfos.ProductVersion
+$ProductVersion = $VersionInfos.ProductVersion + "-nightly"
 "Product version : " + $ProductVersion
 
 "Update nuspec versions ..."
