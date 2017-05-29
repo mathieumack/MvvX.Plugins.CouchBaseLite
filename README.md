@@ -1,10 +1,20 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/uys4bl6qcqauram7/branch/master?svg=true)](https://ci.appveyor.com/project/mathieumack/mvvx-plugins-couchbaselite/branch/master)
-
 # MvvX.CouchBaseLite
 
 Using the CouchBaseLite-Plugin for MvvmCross is quite simple. The plugin injects the ICouchBaseLite interface into the IoC container.
 
-## Nuget Installation
+## Build 
+
+[![Build status](https://ci.appveyor.com/api/projects/status/uys4bl6qcqauram7/branch/master?svg=true)](https://ci.appveyor.com/project/mathieumack/mvvx-plugins-couchbaselite/branch/master)
+
+## Nuget
+
+Project | Nuget
+--- | ---
+CouchBase | [![NuGet package](https://buildstats.info/nuget/MvvX.Plugins.CouchBaseLite?includePreReleases=true)](https://nuget.org/packages/MvvX.Plugins.CouchBaseLite)
+CouchBase with SQLCipher | [![NuGet package](https://buildstats.info/nuget/MvvX.Plugins.CouchBaseLite.SQLCipher?includePreReleases=true)](https://nuget.org/packages/MvvX.Plugins.CouchBaseLite.SQLCipher)
+CouchBase with ForestDB | [![NuGet package](https://buildstats.info/nuget/MvvX.Plugins.CouchBaseLite.ForestDB?includePreReleases=true)](https://nuget.org/packages/MvvX.Plugins.CouchBaseLite.ForestDB)
+
+### Nuget Installation
 
 Install [MvvX.CouchBaseLite](https://www.nuget.org/packages/MvvX.Plugins.CouchBaseLite/) from nuget.
 
@@ -16,7 +26,7 @@ This is an open source project that welcomes contributions/suggestions/bug repor
 
 If you have any ideas on how to improve the library, please [post an issue here on github](https://github.com/mathieumack/MvvX.Plugins.CouchBaseLite/issues). Please check out the [How to Contribute](https://github.com/mathieumack/MvvX.Plugins.CouchBaseLite/wiki/How-to-Contribute).
 
-# Example time
+# Example
 
 ## API
 
