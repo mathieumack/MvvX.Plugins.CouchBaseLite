@@ -112,5 +112,4 @@ $oauth_token_secret = $env:oauth_token_secret
 $messageToPublish = "New #mvvmcross plugin version for #CouchBaseLite ! Version : $ProductVersion. https://www.nuget.org/packages/MvvX.Plugins.CouchBaseLite/"
 
 write-host "Send notification for new version" -foreground "Green"	
-PublishTweets -message $messageToPublish -oauth_consumer_key $oauth_consumer_key
- -oauth_consumer_secret $oauth_consumer_secret -oauth_token $oauth_token -oauth_token_secret $oauth_token_secret
+PublishTweets -message $messageToPublish -oauth_consumer_key $oauth_consumer_key -oauth_consumer_secret $oauth_consumer_secret -oauth_token $oauth_token -oauth_token_secret $oauth_token_secret
