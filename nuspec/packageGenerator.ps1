@@ -109,7 +109,7 @@ $oauth_consumer_key = $env:oauth_consumer_key
 $oauth_consumer_secret = $env:oauth_consumer_secret
 $oauth_token = $env:oauth_token
 $oauth_token_secret = $env:oauth_token_secret
-$messageToPublish = "New #mvvmcross plugin version for #CouchBaseLite ! Version : $ProductVersion. https://www.nuget.org/packages/MvvX.Plugins.CouchBaseLite/"
+$messageToPublish = "New #mvvmcross plugin version for #CouchBaseLite. Version : $ProductVersion. https://www.nuget.org/packages/MvvX.Plugins.CouchBaseLite/"
 
 write-host "Send notification for new version" -foreground "Green"	
 write-host $messageToPublish -foreground "DarkGray"	
