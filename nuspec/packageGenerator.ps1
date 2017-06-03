@@ -12,7 +12,7 @@ Set-Location -Path $locationNuspec
 write-host "Update the nuget.exe file" -foreground "DarkGray"
 .\NuGet update -self
 
-"Packaging to nuget..."
+"Packaging to nuget..." 
 "Build folder : " + $location
 
 $strPath = $location + '\MvvX.Plugins.CouchBaseLite\bin\Release\MvvX.Plugins.CouchBaseLite.dll'
