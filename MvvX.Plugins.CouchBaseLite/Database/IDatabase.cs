@@ -3,6 +3,7 @@ using MvvX.Plugins.CouchBaseLite.Queries;
 using MvvX.Plugins.CouchBaseLite.Views;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MvvX.Plugins.CouchBaseLite.Database
 {
@@ -84,5 +85,11 @@ namespace MvvX.Plugins.CouchBaseLite.Database
         IView GetExistingView(string name);
 
         IView GetView(string name);
+
+        /// <summary>
+        /// Close the connection to the database
+        /// </summary>
+        /// <returns></returns>
+        Task Close();
     }
 }

@@ -7,6 +7,7 @@ using MvvX.Plugins.CouchBaseLite.Platform.Queries;
 using System;
 using MvvX.Plugins.CouchBaseLite.Views;
 using MvvX.Plugins.CouchBaseLite.Shared.Views;
+using System.Threading.Tasks;
 
 namespace MvvX.Plugins.CouchBaseLite.Platform.Database
 {
@@ -164,6 +165,15 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Database
                 return new PlatformView(view, this);
             else
                 return null;
+        }
+
+        /// <summary>
+        /// Closes the connection to the database
+        /// </summary>
+        /// <returns></returns>
+        public Task Close()
+        {
+            return this.database.Close();
         }
 
         #endregion
