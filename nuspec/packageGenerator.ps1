@@ -1,4 +1,3 @@
-
 $location  = $env:APPVEYOR_BUILD_FOLDER
 
 $locationNuspec = $location + "\nuspec"
@@ -16,6 +15,9 @@ $ProductVersion = $VersionInfos.ProductVersion
 "Product version : " + $ProductVersion
 
 "Update nuspec versions ..."
+
+write-host "Update the nuget.exe file" -foreground "DarkGray"
+.\NuGet.exe update -self
 	
 $nuSpecFile =  $locationNuspec + '\MvvX.Plugins.CouchBaseLite.nuspec'
 (Get-Content $nuSpecFile) | 
