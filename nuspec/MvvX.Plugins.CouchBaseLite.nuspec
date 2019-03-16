@@ -19,15 +19,15 @@
         </group>
           <group targetFramework="net45">
             <!-- Always include regardless of target framework -->
-            <dependency id="Couchbase.Lite" version="1.3.0" />
+            <dependency id="Couchbase.Lite" version="1.4.1" />
         </group>
           <group targetFramework="MonoAndroid10">
             <!-- Always include regardless of target framework -->
-            <dependency id="Couchbase.Lite" version="1.3.0" />
+            <dependency id="Couchbase.Lite" version="1.4.1" />
         </group>
           <group targetFramework="xamarinios10">
             <!-- Always include regardless of target framework -->
-            <dependency id="Couchbase.Lite" version="1.3.0" />
+            <dependency id="Couchbase.Lite" version="1.4.1" />
         </group>
         <group targetFramework="portable-win+sl50+wp8">
             <!-- Otherwise include the Portable CSL -->

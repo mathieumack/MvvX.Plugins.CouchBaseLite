@@ -38,7 +38,7 @@
   <ItemGroup>
     <Compile Include="CouchbaseLiteConcurrentException.cs" />
     <Compile Include="CouchbaseLiteException.cs" />
-    <Compile Include="Database\DatabaseChangeEventArgs.cs" />
+    <Compile Include="Database\IDatabaseChangeEventArgs.cs" />
     <Compile Include="Database\IDatabaseOptions.cs" />
     <Compile Include="Documents\IAttachment.cs" />
     <Compile Include="Documents\IDocumentChange.cs" />
@@ -61,8 +61,11 @@
     <Compile Include="Queries\IQueryEnumerator.cs" />
     <Compile Include="Queries\IQueryRow.cs" />
     <Compile Include="Queries\QueryAllDocsMode.cs" />
+    <Compile Include="ReplicationStatus.cs" />
     <Compile Include="Storages\StorageTypes.cs" />
     <Compile Include="Store\SymmetricKeyType.cs" />
+    <Compile Include="Sync\ReplicationChangeEventArgs.cs" />
+    <Compile Include="Sync\IReplication.cs" />
     <Compile Include="Views\Delegates.cs" />
     <Compile Include="Views\IView.cs" />
   </ItemGroup>

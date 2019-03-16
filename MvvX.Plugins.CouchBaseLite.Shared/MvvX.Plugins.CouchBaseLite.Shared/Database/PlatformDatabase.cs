@@ -8,6 +8,8 @@ using System;
 using MvvX.Plugins.CouchBaseLite.Views;
 using MvvX.Plugins.CouchBaseLite.Shared.Views;
 using System.Threading.Tasks;
+using MvvX.Plugins.CouchBaseLite.Shared.Sync;
+using MvvX.Plugins.CouchBaseLite.Sync;
 
 namespace MvvX.Plugins.CouchBaseLite.Platform.Database
 {
@@ -174,6 +176,18 @@ namespace MvvX.Plugins.CouchBaseLite.Platform.Database
         public Task Close()
         {
             return this.database.Close();
+        }
+
+        public IReplication CreatePushReplication(Uri url)
+        {
+            var replication = this.database.CreatePushReplication(url);
+            return new PlatformReplication(replication, this);
+        }
+
+        public IReplication CreatePullReplication(Uri url)
+        {
+            var replication = this.database.CreatePullReplication(url);
+            return new PlatformReplication(replication, this);
         }
 
         #endregion
