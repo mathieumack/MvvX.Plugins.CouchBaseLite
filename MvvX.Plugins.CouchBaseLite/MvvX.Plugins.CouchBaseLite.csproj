@@ -1,101 +1,51 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+
   <PropertyGroup>
-    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{91272C39-1BBD-4478-BCCD-44A4F9EDB64D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MvvX.Plugins.CouchBaseLite</RootNamespace>
     <AssemblyName>MvvX.Plugins.CouchBaseLite</AssemblyName>
-    <DefaultLanguage>fr-FR</DefaultLanguage>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>MvvX.Plugins.CouchBaseLite</RootNamespace>
+    <PackageId>MvvX.Plugins.CouchBaseLite</PackageId>
+    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid81;net461</TargetFrameworks>
+    <NeutralLanguage>en</NeutralLanguage>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>Couchbase lite (MvvmCross plugin)</Product>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseUrl>https://github.com/mathieumack/MvvX.Plugins.CouchBaseLite</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/mathieumack/MvvX.Plugins.CouchBaseLite</PackageProjectUrl>
+    <Authors>MACK Mathieu</Authors>
+    <Company></Company>
+    <Version>2019.0.0.0</Version>
+    <Description>This package contains a mvvmcross plugin for CouchBase.</Description>
+    <RepositoryUrl>https://github.com/mathieumack/MvvX.Plugins.CouchBaseLite</RepositoryUrl>
+    <PackageTags>mvvm;mvvmcross;xamarin;android;ios;mac;forms;monodroid;monotouch;xamarin.android;xamarin.ios;wpf;plugins</PackageTags>
+    <PackageIconUrl />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\MvvX.Plugins.CouchBaseLite.XML</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\MvvX.Plugins.CouchBaseLite.XML</DocumentationFile>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="CouchbaseLiteConcurrentException.cs" />
-    <Compile Include="CouchbaseLiteException.cs" />
-    <Compile Include="Database\IDatabaseChangeEventArgs.cs" />
-    <Compile Include="Database\IDatabaseOptions.cs" />
-    <Compile Include="Documents\IAttachment.cs" />
-    <Compile Include="Documents\IDocumentChange.cs" />
-    <Compile Include="Documents\IRevision.cs" />
-    <Compile Include="Documents\ISavedRevision.cs" />
-    <Compile Include="Documents\IUnsavedRevision.cs" />
-    <Compile Include="ICouchBaseLite.cs" />
-    <Compile Include="Documents\IDocument.cs" />
-    <Compile Include="Database\IDatabase.cs" />
-    <Compile Include="IndexUpdateMode.cs" />
-    <Compile Include="Managers\DateTimeHandling.cs" />
-    <Compile Include="Managers\IJsonSerializer.cs" />
-    <Compile Include="Managers\JsonSerializationSettings.cs" />
-    <Compile Include="Managers\JsonToken.cs" />
-    <Compile Include="PluginLoader.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queries\ILiveQuery.cs" />
-    <Compile Include="Queries\IQuery.cs" />
-    <Compile Include="Queries\IQueryCompletedEventArgs.cs" />
-    <Compile Include="Queries\IQueryEnumerator.cs" />
-    <Compile Include="Queries\IQueryRow.cs" />
-    <Compile Include="Queries\QueryAllDocsMode.cs" />
-    <Compile Include="ReplicationStatus.cs" />
-    <Compile Include="Storages\StorageTypes.cs" />
-    <Compile Include="Store\SymmetricKeyType.cs" />
-    <Compile Include="Sync\ReplicationChangeEventArgs.cs" />
-    <Compile Include="Sync\IReplication.cs" />
-    <Compile Include="Views\Delegates.cs" />
-    <Compile Include="Views\IView.cs" />
+    <Compile Remove="platforms\**\*.cs" />
+    <None Include="platforms\**\*.cs" />
+    <None Include="Resources\*.cs" />
+    <Compile Remove="Resources\*.cs" />
   </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('net4')) ">
+    <Compile Include="platforms\wpf\**\*.cs" />
+    <PackageReference Include="Couchbase.Lite.Support.NetDesktop" Version="2.1.2"></PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+    <Compile Include="platforms\ios\**\*.cs" />
+    <PackageReference Include="Couchbase.Lite.Support.iOS" Version="2.1.2"></PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+    <Compile Include="platforms\android\**\*.cs" />
+    <AndroidResource Include="Resources\**\*.xml" SubType="Designer" Generator="MSBuild:UpdateAndroidResources" />
+    <PackageReference Include="Couchbase.Lite.Support.Android" Version="2.1.2"></PackageReference>
+  </ItemGroup>
+
   <ItemGroup>
-    <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmCross.Binding.4.2.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Binding.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MvvmCross.Core, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmCross.Core.4.2.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MvvmCross.Localization, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmCross.Binding.4.2.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Localization.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MvvmCross.Platform, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmCross.Platform.4.2.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Platform.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <PackageReference Include="Couchbase.Lite" Version="2.1.2" />
+    <PackageReference Include="MvvmCross" Version="6.2.3" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
