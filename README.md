@@ -1,5 +1,5 @@
 
-Note : This repository is no more maintenaned as Mvvmcross is compliant with .net Standard 2 and couchase lite too.
+Note : This repository is no more maintened as Mvvmcross is compliant with .net Standard 2 and couchase lite too.
 If you want to use Couchbase lite with your mvvmcross application (or with other frameworks), you can use NoSqlrepository (https://github.com/mathieumack/NoSqlRepositories) avaiblable also on nuget (https://www.nuget.org/packages/NoSqlRepositories.CouchBaseLite/)
 
 # MvvX.CouchBaseLite
